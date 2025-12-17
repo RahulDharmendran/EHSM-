@@ -5,7 +5,7 @@
         <content>
             <Table id="incidentTable"
                 items="{
-                    path: '/results',
+                    path: 'incidentModel>/results',
                     sorter: { path: 'IncidentDate', descending: true }
                 }"
                 mode="SingleSelectMaster"

@@ -11,6 +11,7 @@ sap.ui.define([
         onInit: function () {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.getRoute("RiskList").attachPatternMatched(this._onObjectMatched, this);
+            this.getView().setModel(new JSONModel(), "riskModel");
         },
 
         _onObjectMatched: function (oEvent) {
@@ -35,8 +36,7 @@ sap.ui.define([
                         if (oItem.RiskIdentificationDate) { oItem.RiskIdentificationDate = new Date(oItem.RiskIdentificationDate); }
                     });
 
-                    var oJSONModel = new JSONModel({ results: aResults });
-                    this.getView().setModel(oJSONModel);
+                    this.getView().getModel("riskModel").setData({ results: aResults });
                     oTable.setBusy(false);
                 }.bind(this),
                 error: function (oError) {
@@ -53,7 +53,7 @@ sap.ui.define([
 
         onRiskPress: function (oEvent) {
             var oItem = oEvent.getParameter("listItem");
-            var oBindingContext = oItem.getBindingContext();
+            var oBindingContext = oItem.getBindingContext("riskModel");
 
             if (!this._oDialog) {
                 Fragment.load({
@@ -62,11 +62,17 @@ sap.ui.define([
                 }).then(function (oDialog) {
                     this._oDialog = oDialog;
                     this.getView().addDependent(this._oDialog);
-                    this._oDialog.bindElement(oBindingContext.getPath());
+                    this._oDialog.bindElement({
+                        path: oBindingContext.getPath(),
+                        model: "riskModel"
+                    });
                     this._oDialog.open();
                 }.bind(this));
             } else {
-                this._oDialog.bindElement(oBindingContext.getPath());
+                this._oDialog.bindElement({
+                    path: oBindingContext.getPath(),
+                    model: "riskModel"
+                });
                 this._oDialog.open();
             }
         },

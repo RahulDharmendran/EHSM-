@@ -11,6 +11,7 @@ sap.ui.define([
         onInit: function () {
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.getRoute("IncidentList").attachPatternMatched(this._onObjectMatched, this);
+            this.getView().setModel(new JSONModel(), "incidentModel");
         },
 
         _onObjectMatched: function (oEvent) {
@@ -40,8 +41,7 @@ sap.ui.define([
                         }
                     });
 
-                    var oJSONModel = new JSONModel({ results: aResults });
-                    this.getView().setModel(oJSONModel);
+                    this.getView().getModel("incidentModel").setData({ results: aResults });
                     oTable.setBusy(false);
                 }.bind(this),
                 error: function (oError) {
@@ -58,7 +58,7 @@ sap.ui.define([
 
         onIncidentPress: function (oEvent) {
             var oItem = oEvent.getParameter("listItem");
-            var oBindingContext = oItem.getBindingContext();
+            var oBindingContext = oItem.getBindingContext("incidentModel");
 
             if (!this._oDialog) {
                 Fragment.load({
@@ -67,11 +67,17 @@ sap.ui.define([
                 }).then(function (oDialog) {
                     this._oDialog = oDialog;
                     this.getView().addDependent(this._oDialog);
-                    this._oDialog.bindElement(oBindingContext.getPath());
+                    this._oDialog.bindElement({
+                        path: oBindingContext.getPath(),
+                        model: "incidentModel"
+                    });
                     this._oDialog.open();
                 }.bind(this));
             } else {
-                this._oDialog.bindElement(oBindingContext.getPath());
+                this._oDialog.bindElement({
+                    path: oBindingContext.getPath(),
+                    model: "incidentModel"
+                });
                 this._oDialog.open();
             }
         },

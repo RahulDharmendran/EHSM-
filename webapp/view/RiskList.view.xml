@@ -5,7 +5,7 @@
         <content>
             <Table id="riskTable"
                 items="{
-                    path: '/results',
+                    path: 'riskModel>/results',
                     sorter: { path: 'RiskIdentificationDate', descending: true }
                 }"
                 mode="SingleSelectMaster"
