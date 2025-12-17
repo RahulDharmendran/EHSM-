@@ -12,13 +12,13 @@ sap.ui.define([
         },
 
         _onObjectMatched: function (oEvent) {
-            var sEmployeeId = oEvent.getParameter("arguments").employeeId;
+            this._sEmployeeId = oEvent.getParameter("arguments").employeeId;
 
             // Filter Incidents by EmployeeId
             var oList = this.byId("incidentsList");
             var oBinding = oList.getBinding("items");
             if (oBinding) {
-                var oFilter = new Filter("EmployeeId", FilterOperator.EQ, sEmployeeId);
+                var oFilter = new Filter("EmployeeId", FilterOperator.EQ, this._sEmployeeId);
                 oBinding.filter([oFilter]);
             }
         },
@@ -29,11 +29,17 @@ sap.ui.define([
         },
 
         onPressIncident: function () {
-            // Future implementation: Navigate to detail view
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("IncidentList", {
+                employeeId: this._sEmployeeId
+            });
         },
 
         onPressRisk: function () {
-            // Future implementation: Navigate to risk view
+            var oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RiskList", {
+                employeeId: this._sEmployeeId
+            });
         }
     });
 });

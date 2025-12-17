@@ -1,0 +1,42 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form">
+    <Dialog title="Incident Details" class="sapUiContentPadding">
+        <content>
+            <f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+                <f:content>
+                    <Label text="Incident ID" design="Bold"/>
+                    <Text text="{IncidentId}" />
+                    
+                    <Label text="Description" design="Bold"/>
+                    <Text text="{IncidentDescription}" />
+                    
+                    <Label text="Category" design="Bold"/>
+                    <Text text="{IncidentCategory}" />
+                    
+                    <Label text="Priority" design="Bold"/>
+                    <ObjectStatus text="{IncidentPriority}" state="{= ${IncidentPriority} === 'High' ? 'Error' : ${IncidentPriority} === 'Medium' ? 'Warning' : 'Success' }"/>
+                    
+                    <Label text="Status" design="Bold"/>
+                    <ObjectStatus text="{IncidentStatus}" state="{= ${IncidentStatus} === 'Open' ? 'Error' : 'Success' }"/>
+
+                    <Label text="Plant" design="Bold"/>
+                    <Text text="{Plant}" />
+                    
+                    <Label text="Date" design="Bold"/>
+                    <Text text="{path: 'IncidentDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }}" />
+                    
+                    <Label text="Time" design="Bold"/>
+                    <Text text="{IncidentTime}" />
+                    
+                    <Label text="Created By" design="Bold"/>
+                    <Text text="{CreatedBy}" />
+                    
+                    <Label text="Completion Date" design="Bold"/>
+                    <Text text="{path: 'CompletionDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }}" />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <beginButton>
+            <Button text="Close" press=".onCloseIncidentDialog"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

@@ -103,6 +103,16 @@
           "name": "Dashboard",
           "pattern": "dashboard/{employeeId}",
           "target": "Dashboard"
+        },
+        {
+          "name": "IncidentList",
+          "pattern": "incidents/{employeeId}",
+          "target": "IncidentList"
+        },
+        {
+          "name": "RiskList",
+          "pattern": "risks/{employeeId}",
+          "target": "RiskList"
         }
       ],
       "targets": {
@@ -114,6 +124,16 @@
         "Dashboard": {
           "id": "Dashboard",
           "name": "Dashboard",
+          "type": "View"
+        },
+        "IncidentList": {
+          "id": "IncidentList",
+          "name": "IncidentList",
+          "type": "View"
+        },
+        "RiskList": {
+          "id": "RiskList",
+          "name": "RiskList",
           "type": "View"
         }
       }

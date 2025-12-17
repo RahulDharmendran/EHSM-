@@ -1,0 +1,51 @@
+<mvc:View controllerName="ehsmportal.controller.IncidentList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="incidentListPage" title="Incident Management" showNavButton="true" navButtonPress=".onNavBack">
+        <content>
+            <Table id="incidentTable"
+                items="{
+                    path: '/ZRD_EHSM_INCIDENTSet',
+                    sorter: { path: 'IncidentDate', descending: true }
+                }"
+                mode="SingleSelectMaster"
+                itemPress=".onIncidentPress"
+                growing="true"
+                growingThreshold="20">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="All Incidents" level="H2"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="Incident ID" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Category" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Description" />
+                    </Column>
+                    <Column>
+                        <Text text="Priority" />
+                    </Column>
+                    <Column hAlign="End">
+                        <Text text="Status" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Navigation">
+                        <cells>
+                            <ObjectIdentifier title="{IncidentId}" text="{Plant}" />
+                            <Text text="{IncidentCategory}" />
+                            <Text text="{IncidentDescription}" maxLines="1" />
+                            <ObjectStatus text="{IncidentPriority}" state="{= ${IncidentPriority} === 'High' ? 'Error' : ${IncidentPriority} === 'Medium' ? 'Warning' : 'Success' }" />
+                            <ObjectStatus text="{IncidentStatus}" state="{= ${IncidentStatus} === 'Open' ? 'Error' : 'Success' }" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

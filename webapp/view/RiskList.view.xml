@@ -1,0 +1,51 @@
+<mvc:View controllerName="ehsmportal.controller.RiskList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="riskListPage" title="Risk Assessment" showNavButton="true" navButtonPress=".onNavBack">
+        <content>
+            <Table id="riskTable"
+                items="{
+                    path: '/ZRD_EHSH_RISKSet',
+                    sorter: { path: 'RiskIdentificationDate', descending: true }
+                }"
+                mode="SingleSelectMaster"
+                itemPress=".onRiskPress"
+                growing="true"
+                growingThreshold="20">
+                <headerToolbar>
+                    <Toolbar>
+                        <Title text="All Risks" level="H2"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="Risk ID" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Category" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="Description" />
+                    </Column>
+                    <Column>
+                        <Text text="Severity" />
+                    </Column>
+                    <Column hAlign="End">
+                        <Text text="Likelihood" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem type="Navigation">
+                        <cells>
+                            <ObjectIdentifier title="{RiskId}" text="{Plant}" />
+                            <Text text="{RiskCategory}" />
+                            <Text text="{RiskDescription}" maxLines="1" />
+                            <ObjectStatus text="{RiskSeverity}" state="{= ${RiskSeverity} === 'High' ? 'Error' : ${RiskSeverity} === 'Medium' ? 'Warning' : 'Success' }" />
+                            <Text text="{Likelihood}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
