@@ -1,7 +1,7 @@
 <mvc:View controllerName="ehsmportal.controller.Login"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:l="sap.ui.layout"
+
     xmlns:core="sap.ui.core">
     <Page id="loginPage" title="Safety Engineer Portal" showHeader="false" backgroundDesign="Standard">
         <FlexBox alignItems="Center" justifyContent="Center" height="100%" direction="Column" class="loginContainer">
