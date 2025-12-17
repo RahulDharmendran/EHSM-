@@ -10,7 +10,7 @@
             
             <VBox class="sapUiMediumMargin loginBox" width="300px">
                 <Label text="Employee ID" design="Bold"/>
-                <Input id="empIdInput" placeholder="Enter Employee ID (e.g., 00000001)" />
+                <Input id="empIdInput" placeholder="Enter Employee ID" />
                 <Label text="Password" design="Bold" class="sapUiSmallMarginTop"/>
                 <Input id="passwordInput" type="Password" placeholder="Enter Password" />
                 <Button text="Login" type="Emphasized" press=".onLoginPress" class="sapUiMediumMarginTop" width="100%" />

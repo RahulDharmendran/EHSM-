@@ -20,9 +20,18 @@
             </FlexBox>
             
             <Panel headerText="Recent Incidents" class="sapUiMediumMargin">
-                <List id="incidentsList" noDataText="No incidents found">
-                    <StandardListItem title="Chemical Spill - Area 4" description="High Priority - Open" icon="sap-icon://lab" info="Today" infoState="Error"/>
-                    <StandardListItem title="Machinery Noise - Plant B" description="Medium Priority - In Progress" icon="sap-icon://factory" info="Yesterday" infoState="Warning"/>
+                <List id="incidentsList" 
+                      items="{
+                        path: '/ZRD_EHSM_INCIDENTSet',
+                        sorter: { path: 'IncidentDate', descending: true }
+                      }"
+                      noDataText="No incidents found">
+                    <StandardListItem 
+                        title="{IncidentDescription}" 
+                        description="{IncidentPriority} - {IncidentStatus}" 
+                        info="{IncidentDate}" 
+                        icon="sap-icon://alert"
+                        infoState="{= ${IncidentPriority} === 'High' ? 'Error' : ${IncidentPriority} === 'Medium' ? 'Warning' : 'Success' }"/>
                 </List>
             </Panel>
         </content>
