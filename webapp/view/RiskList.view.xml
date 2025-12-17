@@ -5,7 +5,7 @@
         <content>
             <Table id="riskTable"
                 items="{
-                    path: '/ZRD_EHSH_RISKSet',
+                    path: '/results',
                     sorter: { path: 'RiskIdentificationDate', descending: true }
                 }"
                 mode="SingleSelectMaster"

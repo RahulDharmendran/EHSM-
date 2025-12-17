@@ -5,7 +5,7 @@
         <content>
             <Table id="incidentTable"
                 items="{
-                    path: '/ZRD_EHSM_INCIDENTSet',
+                    path: '/results',
                     sorter: { path: 'IncidentDate', descending: true }
                 }"
                 mode="SingleSelectMaster"
