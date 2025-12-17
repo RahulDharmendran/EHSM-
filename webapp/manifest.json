@@ -62,8 +62,7 @@
         "settings": {
           "bundleName": "ehsmportal.i18n.i18n",
           "supportedLocales": [
-            "en",
-            ""
+            "en"
           ],
           "fallbackLocale": "en"
         }

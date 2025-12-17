@@ -31,13 +31,40 @@ sap.ui.define([
                 success: function (oData) {
                     var aResults = oData.results || [];
 
-                    // Manually fix dates for JSON Model as it doesn't parse them automatically like ODataModel
+                    // Helper function to format EDM Time
+                    var formatTime = function (edmTime) {
+                        if (!edmTime) return "";
+                        if (typeof edmTime === 'string') {
+                            // Handle "PT08H33M24S" format directly if it comes as string
+                            var match = edmTime.match(/PT(\d+)H(\d+)M(\d+)S/);
+                            if (match) {
+                                return match[1] + ":" + match[2] + ":" + match[3];
+                            }
+                            return edmTime;
+                        }
+                        // Handle object format (sometimes ODataModel returns object even for string properties in raw read)
+                        if (edmTime && edmTime.ms !== undefined) {
+                            var date = new Date(edmTime.ms);
+                            return date.toISOString().substr(11, 8);
+                        }
+                        return edmTime;
+                    };
+
+                    // Manually fix dates and times for JSON Model
                     aResults.forEach(function (oItem) {
                         if (oItem.IncidentDate) { oItem.IncidentDate = new Date(oItem.IncidentDate); }
                         if (oItem.CompletionDate && oItem.CompletionDate.indexOf("0000") === -1) {
                             oItem.CompletionDate = new Date(oItem.CompletionDate);
                         } else {
                             oItem.CompletionDate = null;
+                        }
+
+                        // Fix Time Format
+                        if (oItem.IncidentTime) {
+                            oItem.IncidentTime = formatTime(oItem.IncidentTime);
+                        }
+                        if (oItem.CompletionTime) {
+                            oItem.CompletionTime = formatTime(oItem.CompletionTime);
                         }
                     });
 
