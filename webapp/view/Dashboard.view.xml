@@ -1,9 +1,9 @@
 <mvc:View controllerName="ehsmportal.controller.Dashboard"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page id="dashboardPage" title="Dashboard" showNavButton="false">
+    <Page id="dashboardPage" title="Dashboard" showNavButton="true" navButtonPress=".onLogout">
         <headerContent>
-            <Button icon="sap-icon://log" press=".onLogout" type="Transparent" tooltip="Logout"/>
+            <Button text="Logout" press=".onLogout" type="Transparent" tooltip="Logout"/>
         </headerContent>
         <content>
             <FlexBox wrap="Wrap" justifyContent="Center" class="sapUiSmallMargin">
