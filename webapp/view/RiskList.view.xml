@@ -37,11 +37,11 @@
                 <items>
                     <ColumnListItem type="Navigation">
                         <cells>
-                            <ObjectIdentifier title="{RiskId}" text="{Plant}" />
-                            <Text text="{RiskCategory}" />
-                            <Text text="{RiskDescription}" maxLines="1" />
-                            <ObjectStatus text="{RiskSeverity}" state="{= ${RiskSeverity} === 'High' ? 'Error' : ${RiskSeverity} === 'Medium' ? 'Warning' : 'Success' }" />
-                            <Text text="{Likelihood}" />
+                            <ObjectIdentifier title="{riskModel>RiskId}" text="{riskModel>Plant}" />
+                            <Text text="{riskModel>RiskCategory}" />
+                            <Text text="{riskModel>RiskDescription}" maxLines="1" />
+                            <ObjectStatus text="{riskModel>RiskSeverity}" state="{= ${riskModel>RiskSeverity} === 'High' ? 'Error' : ${riskModel>RiskSeverity} === 'Medium' ? 'Warning' : 'Success' }" />
+                            <Text text="{riskModel>Likelihood}" />
                         </cells>
                     </ColumnListItem>
                 </items>

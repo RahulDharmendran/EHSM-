@@ -37,11 +37,11 @@
                 <items>
                     <ColumnListItem type="Navigation">
                         <cells>
-                            <ObjectIdentifier title="{IncidentId}" text="{Plant}" />
-                            <Text text="{IncidentCategory}" />
-                            <Text text="{IncidentDescription}" maxLines="1" />
-                            <ObjectStatus text="{IncidentPriority}" state="{= ${IncidentPriority} === 'High' ? 'Error' : ${IncidentPriority} === 'Medium' ? 'Warning' : 'Success' }" />
-                            <ObjectStatus text="{IncidentStatus}" state="{= ${IncidentStatus} === 'Open' ? 'Error' : 'Success' }" />
+                            <ObjectIdentifier title="{incidentModel>IncidentId}" text="{incidentModel>Plant}" />
+                            <Text text="{incidentModel>IncidentCategory}" />
+                            <Text text="{incidentModel>IncidentDescription}" maxLines="1" />
+                            <ObjectStatus text="{incidentModel>IncidentPriority}" state="{= ${incidentModel>IncidentPriority} === 'High' ? 'Error' : ${incidentModel>IncidentPriority} === 'Medium' ? 'Warning' : 'Success' }" />
+                            <ObjectStatus text="{incidentModel>IncidentStatus}" state="{= ${incidentModel>IncidentStatus} === 'Open' ? 'Error' : 'Success' }" />
                         </cells>
                     </ColumnListItem>
                 </items>

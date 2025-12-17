@@ -3,32 +3,35 @@
         <content>
             <f:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
                 <f:content>
+                    <Label text="Employee ID" design="Bold"/>
+                    <Text text="{riskModel>EmployeeId}" />
+
                     <Label text="Risk ID" design="Bold"/>
-                    <Text text="{RiskId}" />
+                    <Text text="{riskModel>RiskId}" />
+                    
+                    <Label text="Plant" design="Bold"/>
+                    <Text text="{riskModel>Plant}" />
                     
                     <Label text="Description" design="Bold"/>
-                    <Text text="{RiskDescription}" />
+                    <Text text="{riskModel>RiskDescription}" />
                     
                     <Label text="Category" design="Bold"/>
-                    <Text text="{RiskCategory}" />
+                    <Text text="{riskModel>RiskCategory}" />
                     
                     <Label text="Severity" design="Bold"/>
-                    <ObjectStatus text="{RiskSeverity}" state="{= ${RiskSeverity} === 'High' ? 'Error' : ${RiskSeverity} === 'Medium' ? 'Warning' : 'Success' }"/>
-                    
-                    <Label text="Likelihood" design="Bold"/>
-                    <Text text="{Likelihood}" />
+                    <ObjectStatus text="{riskModel>RiskSeverity}" state="{= ${riskModel>RiskSeverity} === 'High' ? 'Error' : ${riskModel>RiskSeverity} === 'Medium' ? 'Warning' : 'Success' }"/>
                     
                     <Label text="Mitigation Measures" design="Bold"/>
-                    <Text text="{MitigationMeasures}" />
+                    <Text text="{riskModel>MitigationMeasures}" />
 
-                    <Label text="Plant" design="Bold"/>
-                    <Text text="{Plant}" />
-                    
-                    <Label text="Identified Date" design="Bold"/>
-                    <Text text="{path: 'RiskIdentificationDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }}" />
+                    <Label text="Likelihood" design="Bold"/>
+                    <Text text="{riskModel>Likelihood}" />
                     
                     <Label text="Created By" design="Bold"/>
-                    <Text text="{CreatedBy}" />
+                    <Text text="{riskModel>CreatedBy}" />
+
+                    <Label text="Identified Date" design="Bold"/>
+                    <Text text="{path: 'riskModel>RiskIdentificationDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }}" />
                 </f:content>
             </f:SimpleForm>
         </content>
