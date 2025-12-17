@@ -66,6 +66,15 @@ sap.ui.define([
                         if (oItem.CompletionTime) {
                             oItem.CompletionTime = formatTime(oItem.CompletionTime);
                         }
+
+                        // Create formatted display strings
+                        var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ style: "medium" });
+
+                        if (oItem.CompletionDate) {
+                            oItem.CompletionDateDisplay = oDateFormat.format(oItem.CompletionDate);
+                        } else {
+                            oItem.CompletionDateDisplay = "N/A";
+                        }
                     });
 
                     this.getView().getModel("incidentModel").setData({ results: aResults });

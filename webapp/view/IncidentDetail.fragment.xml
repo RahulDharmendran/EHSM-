@@ -34,7 +34,7 @@
                     <Text text="{incidentModel>CreatedBy}" />
                     
                     <Label text="Completion Date" design="Bold"/>
-                    <Text text="{path: 'incidentModel>CompletionDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' }}" />
+                    <Text text="{incidentModel>CompletionDateDisplay}" />
 
                     <Label text="Completion Time" design="Bold"/>
                     <Text text="{incidentModel>CompletionTime}" />

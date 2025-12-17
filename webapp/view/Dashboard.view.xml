@@ -25,8 +25,11 @@
                         path: '/ZRD_EHSM_INCIDENTSet',
                         sorter: { path: 'IncidentDate', descending: true }
                       }"
-                      noDataText="No incidents found">
+                      noDataText="No incidents found"
+                      mode="SingleSelectMaster"
+                      itemPress=".onRecentIncidentPress">
                     <StandardListItem 
+                        type="Navigation"
                         title="{IncidentDescription}" 
                         description="{IncidentPriority} - {IncidentStatus}" 
                         info="{IncidentDate}" 
