@@ -90,17 +90,26 @@
       },
       "routes": [
         {
-          "name": "RouteView1",
-          "pattern": ":?query:",
-          "target": [
-            "TargetView1"
-          ]
+          "name": "Login",
+          "pattern": "",
+          "target": "Login"
+        },
+        {
+          "name": "Dashboard",
+          "pattern": "dashboard",
+          "target": "Dashboard"
         }
       ],
       "targets": {
-        "TargetView1": {
-          "id": "View1",
-          "name": "View1"
+        "Login": {
+          "id": "Login",
+          "name": "Login",
+          "type": "View"
+        },
+        "Dashboard": {
+          "id": "Dashboard",
+          "name": "Dashboard",
+          "type": "View"
         }
       }
     },

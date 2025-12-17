@@ -1,0 +1,30 @@
+<mvc:View controllerName="ehsmportal.controller.Dashboard"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="dashboardPage" title="Dashboard" showNavButton="false">
+        <headerContent>
+            <Button icon="sap-icon://log" press=".onLogout" type="Transparent" tooltip="Logout"/>
+        </headerContent>
+        <content>
+            <FlexBox wrap="Wrap" justifyContent="Center" class="sapUiSmallMargin">
+                <GenericTile class="sapUiSmallMargin" header="Incident Management" subheader="Manage Incidents" press=".onPressIncident" frameType="TwoByOne">
+                    <TileContent>
+                        <ImageContent src="sap-icon://alert" />
+                    </TileContent>
+                </GenericTile>
+                <GenericTile class="sapUiSmallMargin" header="Risk Assessment" subheader="Analyze Risks" press=".onPressRisk" frameType="TwoByOne">
+                    <TileContent>
+                        <ImageContent src="sap-icon://quality-issue" />
+                    </TileContent>
+                </GenericTile>
+            </FlexBox>
+            
+            <Panel headerText="Recent Incidents" class="sapUiMediumMargin">
+                <List id="incidentsList" noDataText="No incidents found">
+                    <StandardListItem title="Chemical Spill - Area 4" description="High Priority - Open" icon="sap-icon://lab" info="Today" infoState="Error"/>
+                    <StandardListItem title="Machinery Noise - Plant B" description="Medium Priority - In Progress" icon="sap-icon://factory" info="Yesterday" infoState="Warning"/>
+                </List>
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>
