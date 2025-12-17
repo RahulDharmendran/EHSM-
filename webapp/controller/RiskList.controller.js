@@ -30,7 +30,7 @@ sap.ui.define([
         },
 
         onRiskPress: function (oEvent) {
-            var oItem = oEvent.getSource();
+            var oItem = oEvent.getParameter("listItem");
             var oBindingContext = oItem.getBindingContext();
 
             if (!this._oDialog) {
