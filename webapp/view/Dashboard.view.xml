@@ -19,24 +19,7 @@
                 </GenericTile>
             </FlexBox>
             
-            <Panel headerText="Recent Incidents" class="sapUiMediumMargin">
-                <List id="incidentsList" 
-                      items="{
-                        path: '/ZRD_EHSM_INCIDENTSet',
-                        sorter: { path: 'IncidentDate', descending: true }
-                      }"
-                      noDataText="No incidents found"
-                      mode="SingleSelectMaster"
-                      itemPress=".onRecentIncidentPress">
-                    <StandardListItem 
-                        type="Navigation"
-                        title="{IncidentDescription}" 
-                        description="{IncidentPriority} - {IncidentStatus}" 
-                        info="{IncidentDate}" 
-                        icon="sap-icon://alert"
-                        infoState="{= ${IncidentPriority} === 'High' ? 'Error' : ${IncidentPriority} === 'Medium' ? 'Warning' : 'Success' }"/>
-                </List>
-            </Panel>
+
         </content>
     </Page>
 </mvc:View>
