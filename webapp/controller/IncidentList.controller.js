@@ -2,7 +2,7 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
-    "sap/core/Fragment"
+    "sap/ui/core/Fragment"
 ], function (Controller, Filter, FilterOperator, Fragment) {
     "use strict";
 
