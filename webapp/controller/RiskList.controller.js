@@ -26,7 +26,7 @@ sap.ui.define([
             var oModel = this.getOwnerComponent().getModel();
             var aFilters = [new Filter("EmployeeId", FilterOperator.EQ, this._sEmployeeId)];
 
-            oModel.read("/ZRD_EHSH_RISKSet", {
+            oModel.read("/ZRD_EHSM_RISKSet", {
                 filters: aFilters,
                 success: function (oData) {
                     var aResults = oData.results || [];
