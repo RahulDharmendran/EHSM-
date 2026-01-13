@@ -18,7 +18,7 @@ server:
         backend:
           - path: /sap
             url: http://172.17.19.24:8000
-            destination: DEMO
+            destination: Portal_Projects
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -35,7 +35,7 @@ server:
       configuration:
         mountPath: /
         services:
-          - urlPath: /sap/opu/odata/sap/ZRD_EHSM_PROJ_SRV
+          - urlPath: /sap/opu/odata/SAP/ZRD_EHSM_PROJ_SRV
             metadataPath: ./webapp/localService/mainService/metadata.xml
             mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
