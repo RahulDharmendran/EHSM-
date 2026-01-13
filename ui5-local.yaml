@@ -38,7 +38,7 @@ server:
       configuration:
         mountPath: /
         services:
-          - urlPath: /sap/opu/odata/sap/ZRD_EHSM_PROJ_SRV
+          - urlPath: /sap/opu/odata/SAP/ZRD_EHSM_PROJ_SRV
             metadataPath: ./webapp/localService/mainService/metadata.xml
             mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
