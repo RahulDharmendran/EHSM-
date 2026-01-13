@@ -35,14 +35,12 @@ sap.ui.define([
                     var formatTime = function (edmTime) {
                         if (!edmTime) return "";
                         if (typeof edmTime === 'string') {
-                            // Handle "PT08H33M24S" format directly if it comes as string
                             var match = edmTime.match(/PT(\d+)H(\d+)M(\d+)S/);
                             if (match) {
                                 return match[1] + ":" + match[2] + ":" + match[3];
                             }
                             return edmTime;
                         }
-                        // Handle object format (sometimes ODataModel returns object even for string properties in raw read)
                         if (edmTime && edmTime.ms !== undefined) {
                             var date = new Date(edmTime.ms);
                             return date.toISOString().substr(11, 8);
@@ -52,9 +50,18 @@ sap.ui.define([
 
                     // Manually fix dates and times for JSON Model
                     aResults.forEach(function (oItem) {
-                        if (oItem.IncidentDate) { oItem.IncidentDate = new Date(oItem.IncidentDate); }
-                        if (oItem.CompletionDate && oItem.CompletionDate.indexOf("0000") === -1) {
-                            oItem.CompletionDate = new Date(oItem.CompletionDate);
+                        // Convert IncidentDate to Date object if exists
+                        if (oItem.IncidentDate && !(oItem.IncidentDate instanceof Date)) {
+                            oItem.IncidentDate = new Date(oItem.IncidentDate);
+                        }
+
+                        // Safely handle CompletionDate
+                        if (oItem.CompletionDate) {
+                            if (typeof oItem.CompletionDate === "string" && oItem.CompletionDate.indexOf("0000") === -1) {
+                                oItem.CompletionDate = new Date(oItem.CompletionDate);
+                            } else if (!(oItem.CompletionDate instanceof Date)) {
+                                oItem.CompletionDate = null;
+                            }
                         } else {
                             oItem.CompletionDate = null;
                         }
@@ -70,7 +77,7 @@ sap.ui.define([
                         // Create formatted display strings
                         var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ style: "medium" });
 
-                        if (oItem.CompletionDate) {
+                        if (oItem.CompletionDate instanceof Date) {
                             oItem.CompletionDateDisplay = oDateFormat.format(oItem.CompletionDate);
                         } else {
                             oItem.CompletionDateDisplay = "N/A";
