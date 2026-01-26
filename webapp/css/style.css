@@ -1,6 +1,5 @@
 /* Enter your custom styles here */
 
-/* Login Page Background */
 div[id$="loginPage-cont"] {
     background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
 }
@@ -18,12 +17,10 @@ div[id$="loginPage-cont"] {
     box-shadow: 0 8px 32px rgba(0,0,0,0.2);
 }
 
-/* Dashboard Specifics */
 div[id$="dashboardPage-cont"] {
     background-color: #f7f9fb;
 }
 
-/* Custom Tile Style */
 .sapMGT {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     border-radius: 8px;

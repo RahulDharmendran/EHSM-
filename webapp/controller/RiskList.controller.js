@@ -31,7 +31,6 @@ sap.ui.define([
                 success: function (oData) {
                     var aResults = oData.results || [];
 
-                    // Manually fix dates for JSON Model
                     aResults.forEach(function (oItem) {
                         if (oItem.RiskIdentificationDate) { oItem.RiskIdentificationDate = new Date(oItem.RiskIdentificationDate); }
                     });

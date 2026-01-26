@@ -14,8 +14,7 @@ sap.ui.define([
                 return;
             }
 
-            // Construct the path for the specific entity
-            // Pattern: /ZRD_EHSM_LOGINSet(EmployeeId='00000001',Password='191203')
+
             var sPath = "/ZRD_EHSM_LOGINSet(EmployeeId='" + sEmpId + "',Password='" + sPassword + "')";
 
             var oModel = this.getOwnerComponent().getModel();
@@ -37,11 +36,7 @@ sap.ui.define([
                 }.bind(this),
                 error: function (oError) {
                     sap.ui.core.BusyIndicator.hide();
-                    // In a real scenario, we might want to assume success if offline or mock, but let's stick to error
-                    // However, if the service is not actually running, this will always fail.
-                    // For the sake of demonstration, if we get a network error in this environment, 
-                    // we might not see "Login Successful".
-                    // But I must implement what was asked.
+
                     MessageToast.show("An error occurred during login.");
                 }
             });

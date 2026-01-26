@@ -31,7 +31,6 @@ sap.ui.define([
                 success: function (oData) {
                     var aResults = oData.results || [];
 
-                    // Helper function to format EDM Time
                     var formatTime = function (edmTime) {
                         if (!edmTime) return "";
                         if (typeof edmTime === 'string') {
@@ -48,14 +47,11 @@ sap.ui.define([
                         return edmTime;
                     };
 
-                    // Manually fix dates and times for JSON Model
                     aResults.forEach(function (oItem) {
-                        // Convert IncidentDate to Date object if exists
                         if (oItem.IncidentDate && !(oItem.IncidentDate instanceof Date)) {
                             oItem.IncidentDate = new Date(oItem.IncidentDate);
                         }
 
-                        // Safely handle CompletionDate
                         if (oItem.CompletionDate) {
                             if (typeof oItem.CompletionDate === "string" && oItem.CompletionDate.indexOf("0000") === -1) {
                                 oItem.CompletionDate = new Date(oItem.CompletionDate);
@@ -66,7 +62,6 @@ sap.ui.define([
                             oItem.CompletionDate = null;
                         }
 
-                        // Fix Time Format
                         if (oItem.IncidentTime) {
                             oItem.IncidentTime = formatTime(oItem.IncidentTime);
                         }
@@ -74,7 +69,6 @@ sap.ui.define([
                             oItem.CompletionTime = formatTime(oItem.CompletionTime);
                         }
 
-                        // Create formatted display strings
                         var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({ style: "medium" });
 
                         if (oItem.CompletionDate instanceof Date) {
